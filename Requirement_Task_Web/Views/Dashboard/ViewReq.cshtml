@@ -1,0 +1,168 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Requirments</title>
+    @*<link href="~/Content/Style.css" rel="stylesheet" />*@
+    <link href="~/Content/ViewReq.css" rel="stylesheet" />
+    <style>
+        table, td, th {
+            /*border: 1px solid #2EB5E0;*/
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+        }
+       h1{
+           color:tan;
+       }
+       th{
+           color:#ff9933;
+       }
+        td {
+            padding: 10px;
+            width: 70px;
+            height: 40px;
+        }
+        
+        body {
+            background: url("../images/default.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: left;
+            background-color:darkcyan;
+            
+        }
+    </style>
+</head>
+<body>
+    @{
+        var value = ViewBag.Position;
+    }
+    @if (value is null) {
+        <script>
+            alert("Login to Continue!!");
+            location.href = "/Dashboard/Login"
+        </script>
+    }
+    <h1>Present Requests</h1>
+    @{
+        var name = ViewBag.Username;
+        var job = ViewBag.job;
+
+    }
+    @try {
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>PM Id</th>
+                <th>Status</th>
+                <th>Skill</th>
+                <th>Action</th>
+                
+            </tr>
+
+            @foreach (var i in Model) {
+
+                if (job == "LD") {
+                    <tr>
+                        <td>@i.Id</td>
+                        <td>@i.Start.ToShortDateString()</td>
+                        <td>@i.End.ToShortDateString()</td>
+                        <td>@i.ProjManID</td>
+                        <td>@i.Status</td>
+                        <td>@i.Skill</td>
+                        @if (i.Status == "Created" || i.Status == "Disapproved") {
+                            <td>
+                                <form action="~/Dashboard/update" method="get">
+                                    <input type="hidden" value="@i.Id" name="Id" />
+                                    <input type="submit" value="Assign" />
+                                </form>
+                            </td>
+                        }
+                        else {
+                            <td></td>
+                        }
+                    </tr>
+                }
+                else if (job == "Executive") {
+                    <tr>
+                        <td>@i.Name</td>
+                        <td>@i.Start.ToShortDateString()</td>
+                        <td>@i.End.ToShortDateString()</td>
+                        <td>@i.ProjManID</td>
+                        <td>@i.Status</td>
+                        <td>@i.Skill</td>
+                        @if (i.Status == "Approved" || i.Status == "Started" || i.Status == "Ongoing" || i.Status == "Completed" || i.Status == "Stopped") {
+                            <td>
+                                <form action="~/Dashboard/update" method="get">
+                                    <input type="hidden" value="@i.Id" name="Id" />
+                                    <input type="submit" value="Change" />
+                                </form>
+                            </td>
+                        }
+                        else {
+                            <td></td>
+                        }
+                    </tr>
+                }
+                else if (job == "PM") {
+                    <tr>
+                        <td>@i.Name</td>
+                        <td>@i.Start.ToShortDateString()</td>
+                        <td>@i.End.ToShortDateString()</td>
+                        <td>@i.ProjManID</td>
+                        <td>@i.Status</td>
+                        <td>@i.Skill</td>
+                        @if (i.Status == "Assigned") {
+                            <td>
+                                <form action="~/Dashboard/Change" method="post">
+                                    <input type="hidden" value="@i.Id" name="Request_Id" />
+                                    <input type="hidden" name="Status" id="Status" />
+                                    <input type="submit" onclick="return fun1()" value="Approve/Disapprove" />
+                                </form>
+                            </td>
+                        }
+                        else {
+                            <td></td>
+                        }
+
+                    </tr>
+                }
+            }
+
+        </table>
+
+
+    }
+    catch (Exception) {
+        <script>
+            alert("Login to Continue");
+            location.href = "/Dashboard/Login"
+        </script>
+    }
+    <br />
+    <a href="/Dashboard/index">Go to Dashboard</a>
+    <script>
+        var value = "";
+        function fun1() {
+           var elem =  document.getElementById('Status')
+           elem.value = prompt(value + "\nEnter Status :");
+            if (elem.value == "Approved" || elem.value == "Disapproved") {
+                return true;
+            }
+            else {
+                value = "Invalid Status Try Again";
+                fun1();
+            }
+        }
+    </script>
+</body>
+</html>

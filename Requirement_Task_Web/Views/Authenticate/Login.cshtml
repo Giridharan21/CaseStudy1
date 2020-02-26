@@ -1,0 +1,88 @@
+﻿@model Requirement_Task_Web.Models.UserInfoModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <style>
+        * {
+            font-family: Rockwell;
+            color:teal;
+        }
+        h1 {
+            text-align: center;
+            
+        }
+        .div{
+            width:50%;
+            font-family:Rockwell;
+            font-size:17px;
+            margin-left:30%;
+            margin-right:25%;
+            margin-top:15%;
+            margin-top:10%;
+
+        }
+        .input {
+            margin-bottom: 20px;
+            margin-top: 10px;
+            padding: 5px;
+            width: 100%;
+            color: black;
+            outline-color:aliceblue;
+        }
+        form{
+            width:70%;
+            color:black;
+        }
+        #submit{
+            text-align:center;
+        }
+        #submit input{
+           
+            background: white;
+            border: 1px solid teal;
+            padding:10px 20px;
+            font-weight:600;
+            font-size:16px;
+        }
+        #submit input:hover {
+            background: teal;
+            border: 1px solid white;
+            color: white;
+            padding: 10px 20px;
+            font-weight:700;
+        }
+        body {
+            /*background: url("../bg6_2.png");
+            background-repeat: no-repeat;
+            background-size: cover;*/
+            background-color:tan;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="div" >
+        @using (Html.BeginForm("Login", "Authenticate", FormMethod.Post)) {
+            <h1>Login Page</h1>
+            <span>User Name :</span> <br />
+            @*<input class="input" type="text" name="Name" required /><br />*@
+            @Html.TextBoxFor(g => g.Name, new {@class="input" }) <br />
+            <span>Password:</span > <br />
+            @*<input class="input" type="password" name="Pass" required /><br />*@
+            @Html.PasswordFor(g => g.Pass, new { @class = "input" }) <br />
+            <br />
+            <div id="submit">
+                <input type="submit" value="Log In" />
+            </div>
+        }
+    </div>
+    <script>@Html.Raw(@ViewBag.value)</script>
+</body>
+</html>

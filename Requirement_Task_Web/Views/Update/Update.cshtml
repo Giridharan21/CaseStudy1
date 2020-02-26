@@ -1,0 +1,52 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Update</title>
+</head>
+<body>
+    @{
+        var value = ViewBag.Position;
+    }
+    @if (value is null) {
+        <script>
+            alert("Login to Continue");
+            location.href = "/Dashboard/Login"
+        </script>
+    }
+
+    @if (value == "LD") {
+        <h1>Update</h1>
+        <form method="post">
+            Request Id : <b>@ViewBag.id</b><input type="hidden" value="@ViewBag.id" name="Request_Id" /><br />
+            Executive Id : <input type="number" name="Executive_Id" /><br />
+            Trainer Id : <input type="number" name="Trainer_Id" /><br />
+            <input type="submit" value="submit" /><br />
+
+        </form>
+
+    }
+    else if (value == "Executive") {
+        <h1>Change</h1>
+        <form action="~/dashboard/change" method="post">
+            Request Id : <b>@ViewBag.id</b><input type="hidden" value="@ViewBag.id" name="Request_Id" /><br />
+            Status : <input type="text" name="Status" /><br />
+            <input type="submit" value="Change" /><br />
+        </form>
+    }
+    else {
+        <script>
+            alert("You don't have Access to this Page")
+            location.href = "/index"
+        </script>
+
+    }
+    <a href="/Dashboard/index">Go to Dashboard</a>
+</body>
+</html>

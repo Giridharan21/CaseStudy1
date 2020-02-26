@@ -1,0 +1,53 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/Index.css" rel="stylesheet" />
+    <style>
+       
+       
+    </style>
+</head>
+<body>
+    @{
+        var value = ViewBag.Position;
+    }
+
+    @if (value is null) {
+        <script>
+            alert("Login to Continue");
+            location.href = "/Authenticate/Login"
+        </script>
+    }
+
+    <h1>Dashboard</h1>
+    <div id="Main">
+        @if (value == "PM") {
+            <div class="div" id='create'>
+                <a href="~/Dashboard/Create">Create New Requirement</a>
+            </div>
+        }
+        <div class="div" id="view">
+            <a href="~/Dashboard/ViewReq/">View Trainings</a>
+        </div>
+    </div>
+    @*<p id="pos" style="display:none">@ViewBag.Position</p>
+        <script>
+            var divElem = document.getElementById('create');
+            //var value = document.getElementById('pos').innerText.toString();
+            var value = @value;
+            divElem.addEventListener('click', () => { value != "PM" ? alert('You are not allowed to use this') : location.href = "/Dashboard/Create" });
+            var divElem2 = document.getElementById('view');
+            divElem2.addEventListener('click', function () { location.href = "/Dashboard/ViewReq" });
+
+     </script>*@
+
+</body>
+</html>

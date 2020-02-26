@@ -1,0 +1,42 @@
+﻿* {
+    font-family: Rockwell;
+}
+
+body {
+    /*height: 630px;
+            background: url("../images/index2.png");
+            background-size:cover;
+            background-repeat: no-repeat;*/
+    background-color: lightblue;
+}
+
+.div {
+    cursor: pointer;
+    border: 1px solid black;
+    height: 60px;
+    width: 100px;
+    margin: 20px;
+    padding: 10px;
+    text-align: center;
+    display: inline;
+    font-size: 17px;
+}
+
+    .div:hover {
+        background: black;
+        color: white;
+    }
+
+h1 {
+    color: #76528B;
+    text-align: center;
+}
+
+#Main {
+    margin-top: 5%;
+    text-align: center;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
