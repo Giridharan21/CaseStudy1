@@ -16,7 +16,12 @@ namespace Requirement_Task_Web.Controllers
                 return View();
             }
             ViewBag.Position = job.Job;
-
+            //SelectListItem[] list = new SelectListItem[3];
+            
+            //list[0]=(new SelectListItem() { Text = "C#", Value = "C#" });
+            //list[1]=(new SelectListItem() { Text = "C", Value = "C" });
+            //list[2]=(new SelectListItem() { Text = "Python", Value = "Python" });
+            //ViewBag.list = list;
             return View();
         }
         [HttpPost]
@@ -27,9 +32,18 @@ namespace Requirement_Task_Web.Controllers
             ViewBag.Position = null;
                 return View();
             }
+
             ViewBag.Position = user.Job;
+            if(req.Start > req.End) {
+                ViewBag.alert = "alert('Start Date Cannot be Greater then End Date')";
+                return View();
+            }
             var req2 = new NewRequest() { Skill=req.Skill, Id = req.Id, Name = req.Name, Start = req.Start, End = req.End, ProjManID = user.Id };
-            
+            //List<SelectListItem> list = new List<SelectListItem>();
+            //list.Add(new SelectListItem() { Text = "C#", Value = "C#" });
+            //list.Add(new SelectListItem() { Text = "C", Value = "C" });
+            //list.Add(new SelectListItem() { Text = "Python", Value = "Python" });
+            //ViewBag.list = list;
             Data.CreateRequest(req2);
             ViewBag.alert = "alert('Request Created Successfully')";
             return View();

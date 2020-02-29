@@ -9,6 +9,9 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Update</title>
+    <link href="~/Content/Update.css" rel="stylesheet" />
+    <style>
+    </style>
 </head>
 <body>
     @{
@@ -24,9 +27,9 @@
     @if (value == "LD") {
         <h1>Update</h1>
         <form method="post">
-            Request Id : <b>@ViewBag.id</b><input type="hidden" value="@ViewBag.id" name="Request_Id" /><br />
-            Executive Id : <input type="number" name="Executive_Id" /><br />
-            Trainer Id : <input type="number" name="Trainer_Id" /><br />
+            Request Id : <b>@ViewBag.id</b><input type="hidden" value="@ViewBag.id" name="Request_Id" /><br /><br /><br />
+            Executive Id :<br /> <input type="number" name="Executive_Id" /><br />
+            Trainer Id :<br /> <input type="number" name="Trainer_Id" /><br /><br />
             <input type="submit" value="submit" /><br />
 
         </form>
@@ -35,8 +38,8 @@
     else if (value == "Executive") {
         <h1>Change</h1>
         <form action="~/dashboard/change" method="post">
-            Request Id : <b>@ViewBag.id</b><input type="hidden" value="@ViewBag.id" name="Request_Id" /><br />
-            Status : <input type="text" name="Status" /><br />
+            Request Id : <b>@ViewBag.id</b><input type="hidden" value="@ViewBag.id" name="Request_Id" /><br /><br /><br />
+            Status : <br /><input type="text" name="Status" /><br /><br />
             <input type="submit" value="Change" /><br />
         </form>
     }
@@ -47,6 +50,7 @@
         </script>
 
     }
-    <a href="/Dashboard/index">Go to Dashboard</a>
+    <br />
+    <a href="/Authenticate/index">Go to Dashboard</a>
 </body>
 </html>

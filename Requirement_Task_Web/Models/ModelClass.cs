@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Web.Mvc;
 
 namespace Requirement_Task_Web.Models {
     public class UserInfoModel {
@@ -21,10 +22,12 @@ namespace Requirement_Task_Web.Models {
         [ForeignKey("PMId")]
         public int ProjManID { get; set; }
         public UserInfoModel PMId { get; set; }
+
         public NewRequestModel() {
             Status = "Created";
             
         }
+       
     }
     public class UpdatedRequestModel {
         public int Id { get; set; }

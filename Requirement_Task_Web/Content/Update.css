@@ -1,0 +1,36 @@
+﻿
+h1 {
+    color: antiquewhite;
+    text-align: center;
+}
+
+
+
+a {
+    text-decoration: none;
+    color: cornsilk;
+    font-weight: 600;
+    margin-left: 38%;
+}
+
+a:hover {
+    color:indigo;
+    border-bottom: 2px solid Black;
+    border-bottom-style: solid;
+}
+input{
+    width:100%;
+    margin-top:5px;
+    margin-bottom:10px;
+}
+
+form{
+    width:24%;
+    margin-left:38%;
+}
+ 
+body {
+    background-color: #2BC0D4;
+    color:black;
+    font-family:Rockwell;
+}

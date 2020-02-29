@@ -144,6 +144,7 @@
     <Content Include="Content\Create.css" />
     <Content Include="Content\Index.css" />
     <Content Include="Content\Style.css" />
+    <Content Include="Content\Update.css" />
     <Content Include="Content\ViewReq.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

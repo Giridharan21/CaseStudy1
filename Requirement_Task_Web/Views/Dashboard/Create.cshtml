@@ -1,4 +1,4 @@
-﻿
+﻿@model Requirement_Task_Web.Models.NewRequestModel
 @{
     Layout = null;
 }
@@ -9,9 +9,11 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Create Requirement</title>
-    
     <link href="~/Content/Create.css" rel="stylesheet" />
     <style>
+        * {
+            font-family: Rockwell;
+        }
         body {
             background: url("../images/default.jpg");
             background-repeat: no-repeat;
@@ -43,31 +45,58 @@
             location.href = "/Authenticate/Index";
         </script>
     }
-    
-        <div id="Form">
-            <form method="post">
-                <h1>New Training Request</h1>
-                <span>Requirements</span><br />
-                <input class="input" type="text" name="Name" required /><br /><br />
-                <span>Skill Set</span><br />
-                <select class="input" name="Skill" required>
-                    <option value="C#">C#</option>
-                    <option value="Python">Python</option>
-                    <option value="Java">Java</option>
-                    <option value="C">C</option>
-                    <option value="C++">C++</option>
-                </select>
-                <br /><br />
-                <span>Start Date</span><br />
-                <input type="date" class="input" name="Start" required /><br /><br />
-                <span>End Date</span><br />
-                <input type="date" name="End" class="input" required /><br /><br />
-                <div id="sub">
-                    <input type="submit" value="submit" /><br /><br />
-                </div>
-                <a href="/Authenticate/index">Go to Dashboard</a>
-            </form>
-        </div>
+    @*<div id="Form">
+        @using (Html.BeginForm("Create", "Dashboard")) {
+            <h1>New Training Request</h1>
+            <span>Requirements</span><br />
+            @Html.TextBoxFor(g=>g.Name)
+            <input class="input" type="text" name="Name" required /><br /><br />
+            <span>Skill Set</span><br />
+            
+            @Html.DropDownList("Skill", (SelectListItem[])ViewBag.value);
+            <select class="input" name="Skill" required>
+                <option value="C#">C#</option>
+                <option value="Python">Python</option>
+                <option value="Java">Java</option>
+                <option value="C">C</option>
+                <option value="C++">C++</option>
+            </select>
+            <br /><br />
+            <span>Start Date</span><br />
+            <input type="date" class="input" name="Start" required /><br /><br />
+            <span>End Date</span><br />
+            <input type="date" name="End" class="input" required /><br /><br />
+            <div id="sub">
+                <input type="submit" value="submit" /><br /><br />
+            </div>
+            <a href="/Authenticate/index">Go to Dashboard</a>
+        }
+    </div>*@
+
+    <div id="Form">
+        <form method="post">
+            <h1>New Training Request</h1>
+            <span>Requirements</span><br />
+            <input class="input" type="text" name="Name" required /><br /><br />
+            <span>Skill Set</span><br />
+            <select class="input" name="Skill" required>
+                <option value="C#">C#</option>
+                <option value="Python">Python</option>
+                <option value="Java">Java</option>
+                <option value="C">C</option>
+                <option value="C++">C++</option>
+            </select>
+            <br /><br />
+            <span>Start Date</span><br />
+            <input type="date" class="input" name="Start" required /><br /><br />
+            <span>End Date</span><br />
+            <input type="date" name="End" class="input" required /><br /><br />
+            <div id="sub">
+                <input type="submit" value="submit" /><br /><br />
+            </div>
+            <a href="/Authenticate/index">Go to Dashboard</a>
+        </form>
+    </div>
     <script>@Html.Raw(ViewBag.alert)</script>
 </body>
 </html>

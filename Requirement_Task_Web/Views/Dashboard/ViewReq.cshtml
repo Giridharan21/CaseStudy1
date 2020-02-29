@@ -29,14 +29,14 @@
             width: 70px;
             height: 40px;
         }
-        
+
         body {
             background: url("../images/default.jpg");
             background-repeat: no-repeat;
             background-size: cover;
             background-position: left;
-            background-color:darkcyan;
-            
+            background-color: darkcyan;
+            font-family: Rockwell;
         }
     </style>
 </head>
@@ -47,7 +47,7 @@
     @if (value is null) {
         <script>
             alert("Login to Continue!!");
-            location.href = "/Dashboard/Login"
+            location.href = "/Authenticate/Login"
         </script>
     }
     <h1>Present Requests</h1>
@@ -81,7 +81,7 @@
                         <td>@i.Skill</td>
                         @if (i.Status == "Created" || i.Status == "Disapproved") {
                             <td>
-                                <form action="~/Dashboard/update" method="get">
+                                <form action="~/Update/update" method="get">
                                     <input type="hidden" value="@i.Id" name="Id" />
                                     <input type="submit" value="Assign" />
                                 </form>
@@ -102,7 +102,7 @@
                         <td>@i.Skill</td>
                         @if (i.Status == "Approved" || i.Status == "Started" || i.Status == "Ongoing" || i.Status == "Completed" || i.Status == "Stopped") {
                             <td>
-                                <form action="~/Dashboard/update" method="get">
+                                <form action="~/Update/update" method="get">
                                     <input type="hidden" value="@i.Id" name="Id" />
                                     <input type="submit" value="Change" />
                                 </form>
@@ -123,7 +123,7 @@
                         <td>@i.Skill</td>
                         @if (i.Status == "Assigned") {
                             <td>
-                                <form action="~/Dashboard/Change" method="post">
+                                <form action="~/Update/Change" method="post">
                                     <input type="hidden" value="@i.Id" name="Request_Id" />
                                     <input type="hidden" name="Status" id="Status" />
                                     <input type="submit" onclick="return fun1()" value="Approve/Disapprove" />
@@ -145,11 +145,11 @@
     catch (Exception) {
         <script>
             alert("Login to Continue");
-            location.href = "/Dashboard/Login"
+            location.href = "/Authenticate/Login"
         </script>
     }
     <br />
-    <a href="/Dashboard/index">Go to Dashboard</a>
+    <a href="/Authenticate/index">Go to Dashboard</a>
     <script>
         var value = "";
         function fun1() {
